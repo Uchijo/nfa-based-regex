@@ -17,6 +17,9 @@ func (rs RegStar) ToStates(startId string) ([]State, string, error) {
 		panic("uuid generation error.")
 	}
 	cs, cout, err := rs.Content.ToStates(contentStart.String())
+	if err != nil {
+		return nil, "", err
+	}
 	entry := State{
 		Id: startId,
 		IsEnd: false,

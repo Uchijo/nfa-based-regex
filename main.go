@@ -11,24 +11,18 @@ func main() {
 		Content: model.RegString{Content: "a"},
 	}
 
-	states, out, err := hoge.ToStates("hoge")
+	states, firstId, err := model.CreateCompleteStates(hoge)
 	if err != nil {
 		panic("something went wrong")
 	}
 
-	endState := model.State{
-		Id:    out,
-		Moves: []model.Move{},
-		IsEnd: true,
-	}
-	states = append(states, endState)
 	for i, v := range states {
 		fmt.Printf("%v: %v\n", i, v)
 	}
 	fmt.Println("")
 
-	input := "aaaaaaaaaaaaaaaaaaaaaaaa"
-	result := search(input, "hoge", true, states)
+	input := "aaaaaaaaaaabaaaaaaaaaaaaaa"
+	result := search(input, firstId, true, states)
 	fmt.Printf("result: %v\n", result)
 
 	// input := "aaa"
