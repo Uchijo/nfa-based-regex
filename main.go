@@ -7,15 +7,19 @@ import (
 )
 
 func main() {
-	hoge := model.RegUnion{
-		Left:  model.RegString{Content: "a"},
-		Right: model.RegString{Content: "b"},
+	hoge := model.RegApp{
+		Contents: []model.RegExp{
+			model.RegString{Content: "a"},
+			model.RegString{Content: "b"},
+			model.RegString{Content: "c"},
+		},
 	}
+
 	states, out, err := hoge.ToStates("hoge")
 	if err != nil {
 		panic("something went wrong")
 	}
-	fmt.Printf("out: %v\n", out)
+
 	endState := model.State{
 		Id: out,
 		Moves: []model.Move{},
@@ -27,7 +31,7 @@ func main() {
 	}
 	fmt.Println("")
 
-	input := "a"
+	input := "abc"
 	result := search(input, "hoge", true, states)
 	fmt.Printf("result: %v\n", result)
 
