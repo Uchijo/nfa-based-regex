@@ -1,18 +1,12 @@
 package model
 
 import (
-	"fmt"
-
 	"github.com/google/uuid"
 )
 
 type RegString struct {
 	RegExp
 	Content string
-}
-
-func (rs RegString) GetInfo() string {
-	return fmt.Sprintf("RegString instance, content: %v", rs.Content)
 }
 
 func (rs RegString) ToStates(startId string) ([]State, string, error) {

@@ -1,8 +1,6 @@
 package model
 
 type RegExp interface {
-	GetInfo() string
-
 	// ToStates creates state list from RegExp and returns it.
 	//
 	// startId specifies entry node's Id.

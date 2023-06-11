@@ -10,10 +10,6 @@ type RegUnion struct {
 	Right RegExp
 }
 
-func (ru RegUnion) GetInfo() string {
-	return "RegString instance"
-}
-
 func (ru RegUnion) ToStates(startId string) ([]State, string, error) {
 	if ru.Left == nil || ru.Right == nil {
 		panic("invalid regex.")
