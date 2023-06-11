@@ -7,12 +7,8 @@ import (
 )
 
 func main() {
-	hoge := model.RegApp{
-		Contents: []model.RegExp{
-			model.RegString{Content: "a"},
-			model.RegString{Content: "b"},
-			model.RegString{Content: "c"},
-		},
+	hoge := model.RegStar{
+		Content: model.RegString{Content: "a"},
 	}
 
 	states, out, err := hoge.ToStates("hoge")
@@ -21,7 +17,7 @@ func main() {
 	}
 
 	endState := model.State{
-		Id: out,
+		Id:    out,
 		Moves: []model.Move{},
 		IsEnd: true,
 	}
@@ -31,7 +27,7 @@ func main() {
 	}
 	fmt.Println("")
 
-	input := "abc"
+	input := "aaaaaaaaaaaaaaaaaaaaaaaa"
 	result := search(input, "hoge", true, states)
 	fmt.Printf("result: %v\n", result)
 
